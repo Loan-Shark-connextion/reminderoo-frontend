@@ -64,8 +64,9 @@ const config = {
           '45': '#3128B5'
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+          DEFAULT: '#FFFFFF',
+          foreground: '#EB2525',
+          hover: '#FEF4F4'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',

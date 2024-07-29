@@ -1,9 +1,11 @@
+import React from 'react';
+
 import Navbar from '@/components/parts/Navbar';
 import Sidebar from '@/components/parts/Sidebar';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-dvh bg-pink-300">
+    <div className="min-h-dvh bg-[#F4F3FB]">
       {/* NAVBAR */}
       <Navbar />
 
