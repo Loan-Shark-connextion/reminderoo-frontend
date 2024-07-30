@@ -33,11 +33,8 @@ const Sidebar = () => {
               <SubCard history />
 
               <Separator />
-              <Link
-                href="/history"
-                className="flex justify-center items-center text-secondary-45 py-3 hover:underline"
-              >
-                <p className="font-semibold text-body-xs">See all History Payments</p>
+              <Link href="/history" className="link py-3">
+                <p>See all History Payments</p>
                 <ArrowUpRight />
               </Link>
             </div>

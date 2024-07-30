@@ -32,10 +32,7 @@ const RightContent = () => {
             <NotificationCard />
             <NotificationCard />
             <NotificationCard />
-            <Link
-              href="/notification"
-              className="flex justify-center items-center text-body-xs text-secondary-45 mt-2 hover:underline"
-            >
+            <Link href="/notification" className="link mt-2 ">
               See all notifications
               <ArrowUpRightIcon className="w-4 h-4" />
             </Link>
