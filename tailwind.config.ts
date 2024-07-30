@@ -64,14 +64,21 @@ const config = {
           '45': '#3128B5'
         },
         destructive: {
-          DEFAULT: '#FFFFFF',
+          DEFAULT: '#FFE4E3',
           foreground: '#EB2525',
-          hover: '#FEF4F4',
-          badge: '#FFE4E3'
+          hover: '#FEF4F4'
+        },
+        warning: {
+          DEFAULT: '#FFFCE3',
+          foreground: '#C4910D'
+        },
+        success: {
+          DEFAULT: '#E3FFED',
+          foreground: '#169946'
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: '#F3F3F2',
+          foreground: '#7F7C7C'
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
