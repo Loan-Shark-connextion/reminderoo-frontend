@@ -66,7 +66,8 @@ const config = {
         destructive: {
           DEFAULT: '#FFFFFF',
           foreground: '#EB2525',
-          hover: '#FEF4F4'
+          hover: '#FEF4F4',
+          badge: '#FFE4E3'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
