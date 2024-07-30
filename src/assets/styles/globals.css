@@ -89,3 +89,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .link {
+    @apply flex justify-center items-center text-secondary-45 hover:underline font-semibold text-body-xs;
+  }
+}
