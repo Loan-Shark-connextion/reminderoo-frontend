@@ -1,13 +1,13 @@
 import { CalendarCheck, CalendarClock, CalendarX } from 'lucide-react';
 
-import DashboardCard from './DashboardCard';
+import OverviewCard from './OverviewCard';
 
 const Dashboard = () => {
   return (
     <section>
       <h6 className="font-semibold text-primary-80 text-heading-6">Overview</h6>
       <div className="flex gap-4 mt-4 overflow-x-auto">
-        <DashboardCard
+        <OverviewCard
           status="success"
           icon={<CalendarCheck />}
           totalSubscriptions={10}
@@ -15,7 +15,7 @@ const Dashboard = () => {
           description="Manage all your active subscriptions efficiently"
           link="/active"
         />
-        <DashboardCard
+        <OverviewCard
           status="warning"
           icon={<CalendarClock />}
           totalSubscriptions={6}
@@ -23,7 +23,7 @@ const Dashboard = () => {
           description="Manage all your upcoming subscriptions efficiently"
           link="/upcoming"
         />
-        <DashboardCard
+        <OverviewCard
           status="destructive"
           icon={<CalendarX />}
           totalSubscriptions={8}

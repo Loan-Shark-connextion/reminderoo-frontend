@@ -2,7 +2,7 @@ import React from 'react';
 
 export type status = 'success' | 'warning' | 'destructive';
 
-export interface DashboardCardProps {
+export interface OverviewCardProps {
   icon: React.JSX.Element;
   totalSubscriptions: number;
   status: status;

@@ -4,16 +4,16 @@ import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
-import { DashboardCardProps } from './types';
+import { OverviewCardProps } from './types';
 
-const DashboardCard = ({
+const OverviewCard = ({
   icon,
   totalSubscriptions,
   status,
   title,
   description,
   link
-}: DashboardCardProps) => {
+}: OverviewCardProps) => {
   return (
     // the max-lg is temporary until we have a proper responsive design
     <Card className="border-none max-lg:flex-shrink-0 max-lg:w-72">
@@ -42,4 +42,4 @@ const DashboardCard = ({
   );
 };
 
-export default DashboardCard;
+export default OverviewCard;
