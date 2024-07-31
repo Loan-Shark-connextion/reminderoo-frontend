@@ -1,6 +1,6 @@
 import { CalendarCheck, CalendarClock, CalendarX } from 'lucide-react';
 
-import OverviewCard from './OverviewCard';
+import OverviewCard from '@/components/parts/OverviewCard';
 
 const Dashboard = () => {
   return (
