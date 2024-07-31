@@ -7,11 +7,13 @@ export type SubscriptionCategory =
   | 'health'
   | 'others';
 
+export type SubStatus = 'inactive' | 'upcoming' | 'active' | 'overdue';
+
 export type Subscription = {
   id: string;
-  appName: number;
+  appName: string;
   category: SubscriptionCategory;
   pricing: number;
   nextPayment: Date;
-  status: 'inactive' | 'upcoming' | 'active' | 'overdue';
+  status: SubStatus;
 };
