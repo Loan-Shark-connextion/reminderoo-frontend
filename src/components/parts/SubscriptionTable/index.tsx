@@ -16,6 +16,7 @@ import {
 import { ChevronLeft, ChevronRight, Filter, Plus, Search, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 
+import { NoSearchResult } from '@/assets/icons';
 import FilterDropdown from '@/components/parts/FilterDropdown';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -179,8 +180,14 @@ const SubscriptionTable = <TData, TValue>({ columns, data }: DataTableProps<TDat
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                <TableCell colSpan={columns.length} className="text-center py-12">
+                  <div className="flex flex-col justify-center items-center gap-2">
+                    <NoSearchResult />
+                    <p className="font-medium text-body-lg">No Result Found</p>
+                    <p className="font-light text-body-md max-w-[14rem]">
+                      Try adjusting your search to find what you are looking for
+                    </p>
+                  </div>
                 </TableCell>
               </TableRow>
             )}
