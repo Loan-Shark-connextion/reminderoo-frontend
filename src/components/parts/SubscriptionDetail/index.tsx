@@ -1,5 +1,10 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 import { ArrowLeft, Check, Edit3, FilmIcon, MoreHorizontal, Trash2, X } from 'lucide-react';
 
+import ConfirmationModal from '@/components/parts/ConfirmationModal';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -12,6 +17,20 @@ import {
 import { Separator } from '@/components/ui/separator';
 
 const SubscriptionDetail = () => {
+  const [warningOpen, setWarningOpen] = useState(false);
+  const [successOpen, setSuccessOpen] = useState(false);
+
+  const handleSuccessOpen = () => {
+    setSuccessOpen(!successOpen);
+  };
+
+  const handleWarningOpen = () => {
+    setWarningOpen(!warningOpen);
+  };
+
+  useEffect(() => {
+    console.log(warningOpen);
+  }, [warningOpen]);
   return (
     <section className="bg-primary-0 p-7 lg:col-span-8">
       {/* <article className="flex flex-col gap-7"> */}
@@ -20,7 +39,7 @@ const SubscriptionDetail = () => {
           <Button variant="outline">
             <ArrowLeft />
           </Button>
-          <h6 className="font-medium text-heading-6">Detail Subscription</h6>
+          <h6 className="font-medium text-heading-6">Subscription Detail</h6>
         </div>
 
         <DropdownMenu>
@@ -62,13 +81,30 @@ const SubscriptionDetail = () => {
           </div>
 
           <div className="flex gap-2">
-            <Button variant="secondary">
-              <Check />
-              Mark as Paid
-            </Button>
-            <Button variant="destructive">
-              <X /> Cancel Subscription
-            </Button>
+            <ConfirmationModal
+              imagePath="/modal-icons/success.png"
+              openState={successOpen}
+              openHandler={handleSuccessOpen}
+              title="Congratulations!"
+              description="Your subscription has been marked as paid."
+            >
+              <Button variant="secondary">
+                <Check /> Mark as Paid
+              </Button>
+            </ConfirmationModal>
+
+            <ConfirmationModal
+              imagePath="/modal-icons/warning.png"
+              openState={warningOpen}
+              openHandler={handleWarningOpen}
+              title="Are you sure?"
+              description="Once cancelled, you will not be able to reactivate your subscription."
+              cancleable
+            >
+              <Button variant="destructive">
+                <X /> Cancel Subscription
+              </Button>
+            </ConfirmationModal>
           </div>
         </div>
 
