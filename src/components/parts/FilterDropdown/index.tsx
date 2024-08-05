@@ -21,7 +21,7 @@ const FilterDropdown = ({ filterFn, title, data }: FilterDropdownType) => {
     <div className="w-1/3 flex flex-col gap-2">
       <p className="text-body-sm font-medium text-primary-80 capitalize">{title}</p>
       <Select onValueChange={(value) => filterFn(value, title)}>
-        <SelectTrigger className="bg-muted">
+        <SelectTrigger>
           <SelectValue placeholder={`All ${title}`} className="capitalize" />
         </SelectTrigger>
         <SelectContent>

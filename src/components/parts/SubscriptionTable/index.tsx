@@ -104,7 +104,6 @@ const SubscriptionTable = <TData, TValue>({ columns, data }: DataTableProps<TDat
                 placeholder="Search..."
                 value={(table.getColumn('appName')?.getFilterValue() as string) ?? ''}
                 onChange={(event) => table.getColumn('appName')?.setFilterValue(event.target.value)}
-                className="bg-muted border-none"
               />
               <div className="absolute text-primary-55 right-3 z-10">
                 <Search className="w-4 h-4" />
