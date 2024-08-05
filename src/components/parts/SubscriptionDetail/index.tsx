@@ -32,7 +32,7 @@ const SubscriptionDetail = () => {
     console.log(warningOpen);
   }, [warningOpen]);
   return (
-    <section className="bg-primary-0 p-7 lg:col-span-8">
+    <section className="bg-primary-0 p-7 rounded-lg lg:col-span-8">
       {/* <article className="flex flex-col gap-7"> */}
       <header className="flex justify-between items-center">
         <div className="flex items-center gap-3">

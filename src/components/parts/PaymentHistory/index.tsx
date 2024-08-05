@@ -11,7 +11,7 @@ import { Separator } from '@/components/ui/separator';
 
 const PaymentHistory = () => {
   return (
-    <section className="bg-primary-0 p-7 lg:col-span-4">
+    <section className="bg-primary-0 p-7 rounded-lg lg:col-span-4">
       <article className="flex flex-col gap-5">
         <h6 className="font-medium text-primary-80 text-heading-6">Payment History</h6>
         <Card className="flex flex-col justify-center items-center text-center gap-4 py-10 px-24">
