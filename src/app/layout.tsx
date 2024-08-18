@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
 
 import '@/assets/styles/globals.css';
 import generalSans from '@/assets/fonts/generalSans';
@@ -20,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={generalSans.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Toaster />
+          {children}
+        </Providers>
       </body>
     </html>
   );

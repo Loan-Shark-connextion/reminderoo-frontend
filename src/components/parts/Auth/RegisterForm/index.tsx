@@ -3,9 +3,12 @@
 import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { Eye, EyeOff, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -13,16 +16,30 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { registerSchema } from '@/lib/validations/auth';
+import { register } from '@/repositories/auth';
 
 const RegisterForm = () => {
+  const router = useRouter();
   const [revealPassword, setRevealPassword] = useState(false);
   const [revealConfirm, setRevealConfirm] = useState(false);
+
+  const registerMutation = useMutation({
+    mutationFn: register,
+    onSuccess: (data) => {
+      console.log(data?.user, 'registerrerererewewewewe');
+      toast.success('Account created successfully');
+    }
+  });
+
   const registerForm = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema)
   });
 
   function onSubmit(values: z.infer<typeof registerSchema>) {
-    console.log(values);
+    const payload = { email: values.email, name: values.name, password: values.password };
+    registerMutation.mutate(payload);
+
+    router.replace('/login');
   }
 
   const handleRevealPassword = () => {

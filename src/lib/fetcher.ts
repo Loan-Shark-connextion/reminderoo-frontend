@@ -37,7 +37,7 @@ export const fetcher = async ({ method = 'GET', url, filters, ...args }: Fetcher
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(data.message);
     }
 
     return data;
