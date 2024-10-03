@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteCookie } from 'cookies-next';
 import { jwtDecode } from 'jwt-decode';
-import { AlertCircle, Eye, EyeOff, Mail } from 'lucide-react';
+import { AlertCircle, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -15,14 +15,11 @@ import { z } from 'zod';
 
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
 import { useUserId } from '@/context/UserIdGlobal';
 import { ACCESS_TOKEN_KEY } from '@/lib/constants/storageKeys';
-import { getCookie, setAccessToken } from '@/lib/cookies';
+import { getCookie, setAccessToken, setUsername } from '@/lib/cookies';
 import { loginSchema } from '@/lib/validations/auth';
 import { login } from '@/repositories/auth';
 
@@ -31,7 +28,6 @@ const LoginForm = () => {
   const router = useRouter();
   const setUserId = useUserId((state: any) => state.setUserId);
   const [reveal, setReveal] = useState(false);
-  const [remember, setRemember] = useState(false);
   const [expiredToken, setExpiredToken] = useState(false);
 
   const accessToken = getCookie(ACCESS_TOKEN_KEY as string);
@@ -45,6 +41,7 @@ const LoginForm = () => {
 
       setAccessToken(data?.accessToken);
       setUserId(data?.user?.id);
+      setUsername(data?.user?.username);
 
       toast.success('Login successful');
       queryClient.invalidateQueries();
@@ -64,15 +61,6 @@ const LoginForm = () => {
 
   const handleReveal = () => {
     setReveal(!reveal);
-  };
-
-  const handleRemember = () => {
-    setRemember(!remember);
-    console.log(remember);
-  };
-
-  const googleSignIn = () => {
-    console.log('google sign in');
   };
 
   useEffect(() => {
@@ -129,30 +117,13 @@ const LoginForm = () => {
                 </div>
               </FormControl>
               <FormMessage />
-              <div className="flex justify-between">
-                <div className="flex items-center gap-2">
-                  <Checkbox id="remember" onCheckedChange={handleRemember} />
-                  <Label htmlFor="remember">Remember me</Label>
-                </div>
-                <Link href="forgot-password" className="font-medium text-secondary-40 text-body-md hover:underline">
-                  Forgot Password?
-                </Link>
-              </div>
             </FormItem>
           )}
         />
 
         <div className="flex flex-col justify-center gap-4 overflow-hidden max-md:mt-[8.5rem]">
           <Button type="submit">Sign In</Button>
-          <div className="flex justify-center items-center gap-3">
-            <Separator className="w-1/2" />
-            <p className="font-medium text-primary-35 text-body-md">or</p>
-            <Separator className="w-1/2" />
-          </div>
-          <Button variant="outline" type="button" onClick={googleSignIn}>
-            <Mail className="w-4 h-4 mr-2" />
-            Sign in With Google
-          </Button>
+
           <p className="font-medium text-primary-45 text-center">
             Don&apos;t have an account?{' '}
             <Link href="/register" className="text-secondary-40 hover:underline">

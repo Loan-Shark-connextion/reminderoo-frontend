@@ -29,3 +29,7 @@ export const setAccessToken = (accessToken: string, options?: OptionsType) => {
     ...options
   });
 };
+
+export const setUsername = (username: string) => {
+  setCookie('username', username);
+};

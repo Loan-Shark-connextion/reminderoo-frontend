@@ -8,9 +8,10 @@ import { Flag, FlagOff } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import Identicon from 'react-identicons';
 import { z } from 'zod';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -72,22 +73,20 @@ const PersonalInfo = () => {
   }, [data, profileForm]);
 
   return (
-    <main className="p-3 lg:col-span-9">
+    <main className="p-3 lg:col-span-12">
       <article className="flex flex-col gap-8">
         <div className="flex flex-wrap justify-between items-center gap-8">
           <div className="flex items-center gap-4">
             <Avatar className="w-16 h-16">
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarFallback>
+                <Identicon string={data?.userId} size={32} />
+              </AvatarFallback>
             </Avatar>
+
             <div>
               <h6 className="font-semibold text-primary-80 text-heading-6">{data?.name}</h6>
               <p className="font-medium text-primary-50 text-body-md">{data?.email}</p>
             </div>
-          </div>
-          <div className="flex gap-3">
-            <Button variant="destructive">Remove Photo</Button>
-            <Button>Upload New photo</Button>
           </div>
         </div>
 
